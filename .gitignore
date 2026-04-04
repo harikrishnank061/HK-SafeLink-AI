@@ -5,5 +5,4 @@ __pycache__/
 .next/
 dist/
 build/
-*.pkl
 *.csv
