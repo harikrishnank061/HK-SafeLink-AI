@@ -61,9 +61,7 @@ export default function Home() {
     setResult(null);
 
     try {
-      // Dynamically detect server host if accessed from other devices on the same network
-      const host = (typeof window !== "undefined" && window.location.hostname) || "localhost";
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || `http://${host}:8000`;
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "/_/backend";
       
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
@@ -75,7 +73,6 @@ export default function Home() {
       
       const data = await response.json();
       
-      // Stabilize the score by calculating it once upon receipt
       if (!data.score) {
         if (data.prediction === "Malicious") {
           data.score = (10 + Math.random() * 5).toFixed(1);
@@ -95,10 +92,9 @@ export default function Home() {
       setScannedUrls(prev => [url, ...prev].slice(0, 5));
     } catch (err: any) {
       console.error("Scan Error:", err);
-      const host = (typeof window !== "undefined" && window.location.hostname) || "localhost";
       setError(
         err.name === "TypeError" && err.message === "Failed to fetch" 
-          ? `Connection Blocked: The Security Engine at http://${host}:8000 is not reachable from your browser. Ensure the backend is active.` 
+          ? `Connection Blocked: The Security Engine (/_/backend) is not reachable. Ensure the backend is active.` 
           : err.message || "A secure connection could not be established."
       );
     } finally {

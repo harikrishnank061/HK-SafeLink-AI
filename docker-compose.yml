@@ -3,13 +3,12 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .
-      dockerfile: backend.Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app/backend
-      - ./defacement_detection_model.pkl:/app/defacement_detection_model.pkl
+      - ./backend:/app
     environment:
       - PYTHONUNBUFFERED=1
 

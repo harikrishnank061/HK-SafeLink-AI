@@ -20,7 +20,7 @@ app.add_middleware(
 
 # Load the model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "..", "defacement_detection_model.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "defacement_detection_model.pkl") 
 try:
     model = joblib.load(MODEL_PATH)
 except Exception as e:
