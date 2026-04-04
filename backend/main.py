@@ -13,7 +13,7 @@ app = FastAPI(title="HK SafeLink AI API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    # allow_credentials cannot be True when allow_origins is ["*"]
     allow_methods=["*"],
     allow_headers=["*"],
 )
