@@ -1,0 +1,9 @@
+node_modules/
+*.pyc
+__pycache__/
+.env
+.next/
+dist/
+build/
+*.pkl
+*.csv

@@ -1,0 +1,14 @@
+{
+  "name": "hk-safelink-ai",
+  "version": "1.0.0",
+  "description": "Premium URL security scanner with Next.js and FastAPI",
+  "scripts": {
+    "install:all": "npm install --prefix frontend && pip install -r backend/requirements.txt",
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000\"",
+    "backend": "python backend/main.py",
+    "frontend": "npm run dev --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
