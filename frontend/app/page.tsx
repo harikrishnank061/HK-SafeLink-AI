@@ -61,7 +61,7 @@ export default function Home() {
     setResult(null);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "/_/backend";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "/api";
       
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
